@@ -102,12 +102,14 @@ dados = dados[-1,-3]
 
 # 10.
 
-remove.packages("pillar")
-remover.packages("dplyr")
 install.packages("pillar")
 install.packages("dplyr")
-
+install.packages("nycflights13")
 library(pillar)
 library(dplyr)
-
-?flights
+library(nycflights13)
+flights
+dados = select(flights, month, day, dep_time, sched_dep_time, arr_time, sched_arr_time)
+dados1 = rename(dados, "Mês"=month, "Dia"=day, "Saída Real"=dep_time, "Saída Programada"=sched_dep_time, "Chegada Real"=arr_time, "Chegada Programada"=sched_arr_time)
+dados2 = filter(dados1, `Saída Real` == 517)
+dados
