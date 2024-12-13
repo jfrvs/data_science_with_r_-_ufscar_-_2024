@@ -102,9 +102,9 @@ dados = dados[-1,-3]
 
 # 10.
 
-install.packages("pillar")
-install.packages("dplyr")
-install.packages("nycflights13")
+#install.packages("pillar")
+#install.packages("dplyr")
+#install.packages("nycflights13")
 library(pillar)
 library(dplyr)
 library(nycflights13)
@@ -112,4 +112,23 @@ flights
 dados = select(flights, month, day, dep_time, sched_dep_time, arr_time, sched_arr_time)
 dados1 = rename(dados, "Mês"=month, "Dia"=day, "Saída Real"=dep_time, "Saída Programada"=sched_dep_time, "Chegada Real"=arr_time, "Chegada Programada"=sched_arr_time)
 dados2 = filter(dados1, `Saída Real` == 517)
-dados
+
+# 11.
+library(ggplot2)
+mpg
+dados_grafico = select(mpg, displ, cty, hwy, trans, class)
+
+ggplot(dados_grafico, aes(trans)) +
+  geom_bar()
+
+ggplot(dados_grafico, aes(class)) +
+  geom_bar()
+
+ggplot(dados_grafico, aes(displ)) +
+  geom_histogram()
+
+ggplot(dados_grafico, aes(cty)) +
+  geom_histogram()
+
+ggplot(dados_grafico, aes(hwy)) +
+  geom_histogram()
